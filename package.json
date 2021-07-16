@@ -1,0 +1,46 @@
+{
+  "name": "vscode-beggar",
+  "description": "A little utility for asking for money in a VSCode extension.",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "compile": "tsc --skipLibCheck && tstei",
+    "compile:watch": "tsc --skipLibCheck --watch",
+    "prepublishOnly": "npm run clean && npm run compile"
+  },
+  "bugs": {
+    "url": "https://github.com/fabiospampinato/vscode-beggar/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Fabio Spampinato",
+    "email": "spampinabio@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiospampinato/vscode-beggar.git"
+  },
+  "keywords": [
+    "vscode",
+    "donation",
+    "money",
+    "ask"
+  ],
+  "engines": {
+    "vscode": "^1.45.0"
+  },
+  "dependencies": {
+    "atomically": "^1.7.0",
+    "env-paths": "^2.2.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.11",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.5",
+    "typescript-transform-export-interop": "^1.0.4",
+    "vscode": "^1.1.37"
+  }
+}
