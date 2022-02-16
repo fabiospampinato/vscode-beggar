@@ -13,7 +13,6 @@ npm install --save vscode-beggar
 Just do the following and this utility will handle the rest. It will prompt users once, usually a couple of minutes after your extension has been initialized for the second time.
 
 ```ts
-
 import beggar from 'vscode-beggar';
 
 beggar ({
@@ -34,6 +33,14 @@ beggar ({
     }
   }
 });
+```
+
+Set the following setting to disable prompts entirely:
+
+```json
+{
+  "donations.disablePrompt": true
+}
 ```
 
 ## License

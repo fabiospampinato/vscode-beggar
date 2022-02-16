@@ -21,10 +21,13 @@ const beggar = async ( options: Options ): Promise<true | false | undefined> => 
   const noWebhook = actions?.no?.webhook;
   const cancelWebhook = actions?.cancel?.webhook;
 
+  const isPromptDisabled = vscode.workspace.getConfiguration ().get ( 'donations.disablePrompt' ) === true;
   const isTelemetryDisabled = ( vscode.env['isTelemetryEnabled'] === false || vscode.workspace.getConfiguration ().get ( 'telemetry.enableTelemetry' ) === false );
 
   const folderPath = envPaths ( 'vscode-beggar', { suffix: '' } ).data;
   const filePath = path.join ( folderPath, `${id}.json` );
+
+  if ( isPromptDisabled ) return;
 
   /* CHECKING CURRENT STATE */
 
