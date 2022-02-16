@@ -31,10 +31,12 @@ const beggar = async ( options: Options ): Promise<true | false | undefined> => 
 
   /* CHECKING CURRENT STATE */
 
+  let state;
+
   try {
 
     const stateRaw = await readFile ( filePath, { encoding: 'utf8' } );
-    const state = JSON.parse ( stateRaw );
+    state = JSON.parse ( stateRaw );
 
     if ( 'state' in state && state.state !== 0 ) return; // Already asked
 
@@ -51,6 +53,12 @@ const beggar = async ( options: Options ): Promise<true | false | undefined> => 
     return; // Asking another time, it's too soon now
 
   }
+
+  /* CHECKING ELAPSED ENOUGH TIME */
+
+  const elapsed = Date.now () - ( state.timestamp || Infinity );
+
+  if ( elapsed < 86400000 ) return; // Too soon, let's wait at least a day
 
   /* WAITING */
 
